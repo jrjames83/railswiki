@@ -1,8 +1,21 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+<h1>Listing Articles</h1>
+<%= link_to 'New article', new_article_path %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th colspan="3"></th>
+  </tr> 
 
 <% @articles.each do |article| %>
-	Id: <%= article.id %> <br>
-	Title: <%= article.title %><br>
-	Desc: <%= article.description %><br>
+<tr>
+	<td>Id: <%= article.id %> <br></td>
+	<td>Title: <%= article.title %><br></td>
+	<td>Desc: <%= article.description %><br></td>
+	<td><%= link_to 'Show', article_path(article) %></td>
+		<td><%= link_to 'Edit', edit_article_path(article) %></td>
+	<td><%= link_to 'Destroy', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %> </tr></td>
 <% end %>
